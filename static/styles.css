@@ -1,0 +1,84 @@
+/* Styles for Calorie Burn Prediction App */
+
+/* Body styles */
+body {
+  background-color: #F0FFF0; /* Pastel green */
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page title styles */
+h1 {
+  font-size: 3.5em;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+  color: #2C3E50;
+  text-shadow: 2px 2px 2px #BDC3C7;
+  font-family: 'Varela Round', sans-serif;
+}
+
+/* Form styles */
+form {
+  background-color: #E0FFFF; /* Pastel blue */
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 600px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  font-size: 1.2em;
+}
+
+select,
+input[type="number"] {
+  border: 1px solid #98FB98; /* Pastel green */
+  border-radius: 5px;
+  font-size: 1.2em;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #90EE90; /* Light green */
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin-top: 20px;
+  padding: 10px 30px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #7CFC00; /* Lawn green */
+}
+
+/* Prediction result styles */
+#prediction_result {
+  background-color: #E0FFFF; /* Pastel blue */
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+  margin: 30px auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  transition: box-shadow 0.3s ease;
+}
