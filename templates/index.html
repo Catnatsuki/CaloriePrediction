@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calorie Consumption Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+      .container {
+        display: flex;
+      }
+      form {
+        flex-basis: 30%;
+        margin-right: 2rem;
+      }
+      #prediction_result {
+        flex-basis: 70%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calorie Consumption Predictor</h1>
+    <div class="container">
+      <form action="/predict" method="post">
+        <label for="gender">Select gender:</label>
+        <select name="gender" id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <br><br>
+        <label for="duration">Enter Workout duration (in minutes):</label>
+        <input type="number" id="duration" name="duration" step="0.01" min="0" value="0"><br>
+        <label for="heart_rate">Enter heart rate:</label>
+        <input type="number" id="heart_rate" name="heart_rate" step="1" min="0" value="0"><br>
+        <input type="submit" value="Predict">
+      </form>
+      <div id="prediction_result"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+      const form = document.querySelector('form');
+      const predictionResultDiv = document.querySelector('#prediction_result');
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch('/predict', {
+          method: 'POST',
+          body: formData
+        })
+          .then(response => response.json())
+          .then(data => {
+            predictionResultDiv.innerHTML = `Predicted calorie consumption is: ${data.prediction_result}`;
+          })
+          .catch(error => console.error(error));
+      });
+    </script>
+    <script>
+        // Animate the page title
+        anime({
+          targets: 'h1',
+          translateY: [-50, 0],
+          opacity: [0, 1],
+          duration: 1000,
+          easing: 'easeInOutQuad'
+        });
+
+        // Animate the form
+        anime({
+          targets: 'form',
+          translateY: [20, 0],
+          opacity: [0, 1],
+          delay: 500,
+          duration: 1000,
+          easing: 'easeInOutQuad'
+        });
+
+        // Animate the submit button
+        anime({
+          targets: 'input[type="submit"]',
+          scale: [0.8, 1],
+          duration: 800,
+          delay: 1000,
+          easing: 'easeInOutQuad'
+        });
+
+        // Animate the prediction result
+        anime({
+          targets: '#prediction_result',
+          translateY: [20, 0],
+          opacity: [0, 1],
+          delay: 1500,
+          duration: 1000,
+          easing: 'easeInOutQuad'
+        });
+    </script>
+  </body>
+</html>
